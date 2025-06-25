@@ -128,6 +128,17 @@ public class LibraryService {
         System.err.println("Erro: Nao foi possivel devolver o livro");
     }
 
+    public void removeBook(String bookTitle){
+        Book book = books.get(bookTitle);
+        if(book == null){
+            System.out.println("Livro com titulo '" + bookTitle + "' nao encontrado");
+            return;
+        }
+
+        authors.get(book.getAuthor()).removeBook(book);
+        books.remove(bookTitle);
+    }
+
     public void listAvailableBooks(){
         System.out.println("Livros disponiveis: ");
         for(Book book : books.values()){
