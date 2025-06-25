@@ -9,7 +9,6 @@ public class Author {
     private List<Book> bookList;
 
     public Author(int id, String name) {
-
         this.id = id;
         this.name = name;
         this.bookList = new ArrayList<>();

@@ -6,12 +6,14 @@ import java.util.ArrayList;
 public class User {
     private String name;
     private String password;
-    private List<Book> bookList;
+    private Book book;
+    private boolean hasBook;
 
     public User(String name, String password) {
         this.name = name;
         this.password = password;
-        this.bookList = new ArrayList<>();
+        this.book = null;
+        this.hasBook = false;
     }
 
     public String getName() {
@@ -22,8 +24,12 @@ public class User {
         return password;
     }
 
-    public List<Book> getBookList() {
-        return bookList;
+    public Book getBook() {
+        return book;
+    }
+
+    public boolean getHasBook(){
+        return this.hasBook;
     }
 
     public void setName(String name) {
@@ -34,27 +40,22 @@ public class User {
         this.password = password;
     }
 
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
-    public void addBook(Book book){
-        this.bookList.add(book);
+    public void setHasBook(boolean hasBook) {
+        this.hasBook = User.this.hasBook;
     }
 
-    public void removeBook(Book book){
-        this.bookList.remove(book);
-    }
 
     @Override
     public String toString(){
-        StringBuilder str = new StringBuilder("User:{" + "name=" + name + ", password=" + password + ", books=");
-
-        for (Book book : bookList) {
-            str.append(book).append(";");
-        }
-
-        str.append("}");
-        return str.toString();
+        return"User:{"
+                + "name=" + name
+                + ", password=" + password
+                + ", book=" + book
+                + ", hasBook=" + hasBook
+                + "}";
     }
 }

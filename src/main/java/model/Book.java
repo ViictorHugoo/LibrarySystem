@@ -50,6 +50,7 @@ public class Book {
         return "Book:{" + "title=" + title
                 + ", genre=" + genre
                 + ", author=" + author
-                + ", available=" + available + "}";
+                + ", available=" + available
+                + "}";
     }
 }
