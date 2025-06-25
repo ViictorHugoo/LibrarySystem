@@ -1,4 +1,4 @@
-package model;
+package src.main.java.model;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ class User {
         return password;
     }
 
-    public List<book> getBookList() {
+    public List<Book> getBookList() {
         return bookList;
     }
 

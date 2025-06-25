@@ -1,14 +1,14 @@
-package model;
+package src.main.java.model;
 
 import java.util.List;
 import java.util.ArrayList;
 
 class Author {
-    private Int id;
+    private int id;
     private String name;
     private List<Book> bookList;
 
-    public Author(Int id, String name) {
+    public Author(int id, String name) {
 
         this.id = id;
         this.name = name;
@@ -19,7 +19,7 @@ class Author {
         return this.name;
     }
 
-    public Int getId(){
+    public int getId(){
         return this.id;
     }
 
@@ -27,7 +27,7 @@ class Author {
         this.name = name;
     }
 
-    public void setId(Int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
