@@ -131,35 +131,33 @@ public class LibraryService {
     public void listAvailableBooks(){
         System.out.println("Livros disponiveis: ");
         for(Book book : books.values()){
-            if(book.isAvailable()) System.out.println(book);
+            if(book.isAvailable()) System.out.println(book.getTitle() + " - " + book.getAuthor());
         }
     }
 
     public void listBorrowedBooks(){
         System.out.println("Livros emprestados: ");
         for(Book book : books.values()){
-            if(!book.isAvailable()) System.out.println(book);
+            if(!book.isAvailable()) System.out.println(book.getTitle() + " - " + book.getAuthor());
         }
     }
 
     public void listBooks(){
         System.out.println("Livros cadastrados: ");
-        for(Book book : books.values()){
-            System.out.println(book);
-        }
+        for(Book book : books.values()) System.out.println(book.getTitle() + " - " + book.getAuthor());
     }
 
     public void listAuthors(){
         System.out.println("Autores cadastrados: ");
         for(Author author : authors.values()){
-            System.out.println(author);
+            System.out.println(author.getName());
         }
     }
 
     public void listUsers(){
         System.out.println("Usuarios cadastrados: ");
         for(User user : users.values()){
-            System.out.println(user);
+            System.out.println(user.getName());
         }
     }
 
