@@ -1,13 +1,13 @@
-package service;
+package src.main.java.service;
 
-import model.Author;
-import model.Book;
-import model.User;
+import src.main.java.model.Author;
+import src.main.java.model.Book;
+import src.main.java.model.User;
 
 import java.util.HashMap;
 import java.util.Map;
 
-class Library {
+public class LibraryService {
     private Map<String, Book> books;
     private Map<String, Author> authors;
     private Map<String, User> users;

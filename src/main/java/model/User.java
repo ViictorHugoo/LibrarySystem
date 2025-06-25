@@ -3,7 +3,7 @@ package src.main.java.model;
 import java.util.List;
 import java.util.ArrayList;
 
-class User {
+public class User {
     private String name;
     private String password;
     private List<Book> bookList;
@@ -48,11 +48,13 @@ class User {
 
     @Override
     public String toString(){
-        String str = "User:{" + "name=" + name + ", password=" + password + ", book=";
+        StringBuilder str = new StringBuilder("User:{" + "name=" + name + ", password=" + password + ", books=");
 
-        for(Book book : bookList) str += book + ";";
+        for (Book book : bookList) {
+            str.append(book).append(";");
+        }
 
-        str += "}";
-        return str;
+        str.append("}");
+        return str.toString();
     }
 }

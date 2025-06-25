@@ -1,6 +1,6 @@
 package src.main.java.model;
 
-class Book {
+public class Book {
     private String title;
     private String genre;
     private String author;
@@ -47,6 +47,9 @@ class Book {
 
     @Override
     public String toString(){
-        return "Book:{" + "title=" + title + ", genre=" + genre + ", author=" + author + ", available=" + available + "}";
+        return "Book:{" + "title=" + title
+                + ", genre=" + genre
+                + ", author=" + author
+                + ", available=" + available + "}";
     }
 }
