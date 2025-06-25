@@ -34,7 +34,7 @@ class User {
         this.password = password;
     }
 
-    public void setBookList(List<book> bookList) {
+    public void setBookList(List<Book> bookList) {
         this.bookList = bookList;
     }
 
@@ -48,7 +48,7 @@ class User {
 
     @Override
     public String toString(){
-        String str = "User:{" + "name=" + name + ", email=" + email + ", password=" + password + ", book=";
+        String str = "User:{" + "name=" + name + ", password=" + password + ", book=";
 
         for(Book book : bookList) str += book + ";";
 

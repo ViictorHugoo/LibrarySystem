@@ -4,13 +4,13 @@ class Book {
     private String title;
     private String genre;
     private String author;
-    private boolean avaliable;
+    private boolean available;
 
     public Book(String title, String genre, String author) {
         this.title = title;
         this.genre = genre;
         this.author = author;
-        this.avaliable = true;
+        this.available = true;
     }
 
     public String getTitle(){
@@ -25,8 +25,8 @@ class Book {
         return author;
     }
 
-    public boolean isAvaliable() {
-        return avaliable;
+    public boolean isAvailable() {
+        return available;
     }
 
     public void setTitle(String title) {
@@ -41,12 +41,12 @@ class Book {
         this.author = author;
     }
 
-    public void setAvaliable(boolean avaliable) {
-        this.avaliable = avaliable;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     @Override
     public String toString(){
-        return "Book:{" + "title=" + title + ", genre=" + genre + ", author=" + author + ", avaliable=" + avaliable + "}";
+        return "Book:{" + "title=" + title + ", genre=" + genre + ", author=" + author + ", available=" + available + "}";
     }
 }
