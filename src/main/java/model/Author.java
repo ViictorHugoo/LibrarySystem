@@ -4,12 +4,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Author {
-    private int id;
     private String name;
     private List<Book> bookList;
 
-    public Author(int id, String name) {
-        this.id = id;
+    public Author(String name) {
         this.name = name;
         this.bookList = new ArrayList<>();
     }
@@ -18,16 +16,8 @@ public class Author {
         return this.name;
     }
 
-    public int getId(){
-        return this.id;
-    }
-
     public void setName(String name){
         this.name = name;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public List<Book> getBookList() {
@@ -48,7 +38,7 @@ public class Author {
 
     @Override
     public String toString(){
-        StringBuilder str = new StringBuilder("Author:{id=" + id + ", name=" + name + ", books=");
+        StringBuilder str = new StringBuilder("Author:{name=" + name + ", books=");
 
         for (Book book : bookList) {
             str.append(book).append(";");
