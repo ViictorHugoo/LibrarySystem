@@ -67,10 +67,10 @@ public class DataLoader {
         library.registerBook(new Book("Angústia", "Romance", "Graciliano Ramos"));
 
         // Usuários
-        library.registerUser(new User("Victor Guimarães", "1234"));
-        library.registerUser(new User("João Silva", "abcd"));
-        library.registerUser(new User("Maria Oliveira", "pass123"));
-        library.registerUser(new User("Ana Santos", "ana456"));
-        library.registerUser(new User("Carlos Mendes", "mendes789"));
+        library.registerUser(new User("Victor Guimarães"));
+        library.registerUser(new User("João Silva"));
+        library.registerUser(new User("Maria Oliveira"));
+        library.registerUser(new User("Ana Santos"));
+        library.registerUser(new User("Carlos Mendes"));
     }
 }

@@ -8,7 +8,7 @@ public class User {
     private Book book;
     private boolean hasBook;
 
-    public User(String name, String password) {
+    public User(String name) {
         this.name = name;
         this.book = null;
         this.hasBook = false;
@@ -35,7 +35,7 @@ public class User {
     }
 
     public void setHasBook(boolean hasBook) {
-        this.hasBook = User.this.hasBook;
+        this.hasBook = hasBook;
     }
 
 
