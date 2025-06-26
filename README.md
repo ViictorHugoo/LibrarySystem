@@ -48,20 +48,16 @@ Para compilar e executar este projeto, você precisará ter o Java Development K
 
 1.  **Navegue até o diretório raiz do projeto:**
 
-    ```bash
-    cd /home/ubuntu/LibrarySystem/LibrarySystem
-    ```
-
 2.  **Compile os arquivos Java:**
 
     ```bash
-    javac src/main/java/Main.java src/main/java/model/*.java src/main/java/service/*.java src/main/java/util/*.java src/main/java/view/*.java
+    mvn clean compile
     ```
 
 3.  **Execute a aplicação:**
 
     ```bash
-    java src.main.java.Main
+    mvn exec:java  -Dexec.mainClass="src.main.java.Main"
     ```
 
     Ao executar, você será apresentado a um menu inicial. Você pode digitar `ciente` para interagir com o sistema ou `teste` para rodar os casos de teste automatizados.
