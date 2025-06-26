@@ -48,6 +48,9 @@ public class Menu {
         System.out.println("Digite '30' para cadastrar um autor");
         System.out.println("Digite '31' para ver os autores cadastrados");
         System.out.println();
+        System.out.println("Digite '40' para remover um livro");
+        System.out.println("Digite '41' para remover um autor");
+        System.out.println();
     }
 
     public void handleInitialMenuInput() {
@@ -109,6 +112,12 @@ public class Menu {
                 case 31:
                     library.listAuthors();
                     break;
+                case 40:
+                    removeBook();
+                    break;
+                case 41:
+                    removeAuthor();
+                    break;
                 default:
                     System.err.println("Opção inválida, digite novamente: ");
             }
@@ -144,6 +153,18 @@ public class Menu {
         String userName = InputHandler.getStringInput("Digite o nome do usuário: ");
         String bookTitle = InputHandler.getStringInput("Digite o título do livro a ser devolvido: ");
         library.returnBook(userName, bookTitle);
+    }
+
+    private void removeBook() {
+        String bookTitle = InputHandler.getStringInput("Digite o titulo do livro a ser removido: ");
+        library.removeBook(bookTitle);
+    }
+
+    private void removeAuthor() {
+        System.out.println("A remocao de um autor acarreta na remocao de todos os livros dele na nossa colecao.");
+        System.out.println();
+        String authorName = InputHandler.getStringInput("Digite o nome do autor a ser removido: ");
+        library.removeAuthor(authorName);
     }
 
     public static void clearTerminal() {

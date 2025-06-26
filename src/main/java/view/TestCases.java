@@ -1,8 +1,6 @@
 package src.main.java.view;
 
-import src.main.java.model.Author;
-import src.main.java.model.Book;
-import src.main.java.model.User;
+import src.main.java.model.*;
 import src.main.java.service.LibraryService;
 
 public class TestCases {
@@ -38,9 +36,17 @@ public class TestCases {
         System.out.println("\n--- 6. Listagens ---");
         testListings(library);
 
-        // 7. Cobertura de Fluxos Combinados (extra)
+        // 7. Cobertura de Fluxos Combinados
         System.out.println("\n--- 7. Cobertura de Fluxos Combinados ---");
         testCombinedFlows(library);
+
+        // 8. Remoção de livros
+        System.out.println("\n--- 8. Remoção de livros ---");
+        testRemoveBook(library);
+
+        //9. Remoção de autores
+        System.out.println("\n--- 9. Remoção de autores ---");
+        testRemoveAuthor(library);
 
         System.out.println("\n========================================");
         System.out.println("EXECUÇÃO DOS CASOS DE TESTE CONCLUÍDA");
@@ -189,6 +195,46 @@ public class TestCases {
         library.registerAuthor(new Author("Autor FX1")); // Duplicado
         library.registerBook(new Book("Livro Inexistente Autor", "G", "Autor Nao Existe"));
         library.registerUser(new User("Usuario FX1")); // Duplicado
+    }
+
+    private static void testRemoveBook(LibraryService library) {
+        System.out.println("--------------- logs de preparação de testes ---------------");
+        library.registerAuthor(new Author("Autor RL1"));
+        library.registerBook(new Book("Livro RL1", "Genero RL1", "Autor RL1"));
+        library.registerBook(new Book("Livro RL3", "Genero RL3", "Autor RL1"));
+        library.registerUser(new User("Usuario RL3"));
+        library.borrowBook("Usuario RL3", "Livro RL3");
+        System.out.println("------------------------------------------------------------");
+        System.out.println();
+
+        System.out.println("RL1: Remover livro existente e disponivel");
+        library.removeBook("Livro RL1");
+
+        System.out.println("RL2: Remover livro inexistente");
+        library.removeBook("Livro RL1");
+
+        System.out.println("RL3: Remover livro disponivel e emprestado");
+        library.removeBook("Livro RL3");
+    }
+
+    private static void testRemoveAuthor(LibraryService library) {
+        System.out.println("--------------- logs de preparação de testes ---------------");
+        library.registerAuthor(new Author("Autor RA1"));
+        library.registerAuthor(new Author("Autor RA3"));
+        library.registerBook(new Book("Livro RA3", "Genero RA3", "Autor RA3"));
+        library.registerUser(new User("Usuario RA3"));
+        library.borrowBook("Usuario RA3", "Livro RA3");
+        System.out.println("------------------------------------------------------------");
+        System.out.println();
+
+        System.out.println("RA1: Remover autor existente");
+        library.removeAuthor("Autor RA1");
+
+        System.out.println("RA2: Remover autor inexistente");
+        library.removeAuthor("Autor RA1");
+
+        System.out.println("RA3: Remover autor com livros emprestados");
+        library.removeAuthor("Autor RA3");
     }
 }
 

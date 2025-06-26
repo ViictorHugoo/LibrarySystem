@@ -1,11 +1,10 @@
 package src.main.java.service;
 
-import src.main.java.model.Author;
-import src.main.java.model.Book;
-import src.main.java.model.User;
+import src.main.java.model.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
 
 public class LibraryService {
     private Map<String, Book> books;
@@ -49,8 +48,8 @@ public class LibraryService {
             return;
         }
 
-        linkBookToAuthor(book.getTitle(), book.getAuthor());
         books.put(book.getTitle(), book);
+        linkBookToAuthor(book.getTitle(), book.getAuthor());
         System.out.println("Livro cadastrado com sucesso");
     };
 
@@ -134,9 +133,31 @@ public class LibraryService {
             System.out.println("Livro com titulo '" + bookTitle + "' nao encontrado");
             return;
         }
+        if(!book.isAvailable()){
+            System.out.println("O livro '" + bookTitle + "' nao pode ser removido, atualmente em emprestimo");
+            return;
+        }
 
-        authors.get(book.getAuthor()).removeBook(book);
+        Author author = authors.get(book.getAuthor());
+        if (author != null) author.removeBook(book);
+
         books.remove(bookTitle);
+        System.out.println("Livro '" + bookTitle + "' removido com sucesso" );
+    }
+
+    public void removeAuthor(String authorName){
+        Author author = authors.get(authorName);
+        if(author == null){
+            System.out.println("Autor com nome '" + authorName + "' nao encontrado");
+            return;
+        }
+
+        for(Book book : new ArrayList<>(author.getBookList())){
+            if(book != null) removeBook(book.getTitle());
+        }
+
+        authors.remove(authorName);
+        System.out.println("Autor '" + authorName + "' removido com sucesso");
     }
 
     public void listAvailableBooks(){
@@ -156,6 +177,13 @@ public class LibraryService {
     public void listBooks(){
         System.out.println("Livros cadastrados: ");
         for(Book book : books.values()) System.out.println(book.getTitle() + " - " + book.getAuthor());
+    }
+
+    public void listBooksByAuthor(String authorName){
+        Author author = authors.get(authorName);
+        for(Book book : author.getBookList()){
+            System.out.println(book.getTitle());
+        }
     }
 
     public void listAuthors(){
