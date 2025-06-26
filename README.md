@@ -42,11 +42,12 @@ LibrarySystem/
     - `Menu.java`: Exibe os menus da aplicação e lida com a interação do usuário.
     - `TestCases.java`: Contém uma série de testes automatizados para verificar a funcionalidade do sistema.
 
+Para mais informações acesse o [git pages](viictorhugoo.github.io/LibrarySystem/)
 ## Como Rodar o Projeto
 
 Para compilar e executar este projeto, você precisará ter o Java Development Kit (JDK) instalado (versão 17 ou superior é recomendada).
 
-1.  **Navegue até o diretório raiz do projeto:**
+1.  **Navegue até o diretório raiz do projeto**
 
 2.  **Compile os arquivos Java:**
 
