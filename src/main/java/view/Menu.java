@@ -4,13 +4,19 @@ import src.main.java.model.*;
 import src.main.java.service.LibraryService;
 import src.main.java.util.InputHandler;
 
+/**
+ * Classe responsável por exibir os menus da aplicação e interagir com o usuário.
+ * Gerencia a entrada do usuário e chama os métodos apropriados do LibraryService.
+ */
 public class Menu {
     private LibraryService library;
 
     public Menu(LibraryService library) {
         this.library = library;
     }
-
+    /**
+     * Exibe o menu inicial da aplicação, com opções para entrar no sistema, rodar testes ou sair.
+     */
     public void displayInitialMenu(){
         System.out.println("---------------------------------------------------------------------------------");
         System.out.println("Ola, sou a super inteligente biblioteca interativa e exclusiva.");
@@ -30,6 +36,9 @@ public class Menu {
         System.out.println();
     }
 
+    /**
+     * Exibe o menu principal do sistema, com todas as opções de gerenciamento da biblioteca.
+     */
     public void displayInsideSystemMenu(){
         System.out.println("Bem vindo ao sistema da biblioteca");
         System.out.println();
@@ -53,6 +62,9 @@ public class Menu {
         System.out.println();
     }
 
+    /**
+     * Lida com a entrada do usuário no menu inicial, direcionando para o sistema interno, testes ou saída.
+     */
     public void handleInitialMenuInput() {
         String mode = InputHandler.getStringInput("Sua resposta: ").toLowerCase();
         switch (mode) {
@@ -72,6 +84,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Lida com a entrada do usuário no menu interno do sistema, executando as operações da biblioteca.
+     */
     public void handleInsideSystemMenu() {
         while (true) {
             clearTerminal();
@@ -167,6 +182,9 @@ public class Menu {
         library.removeAuthor(authorName);
     }
 
+    /**
+     * Limpa o terminal exibindo várias linhas em branco.
+     */
     public static void clearTerminal() {
         for (int i = 0; i < 50; i++) {
             System.out.println();

@@ -1,8 +1,9 @@
 package src.main.java.model;
 
-import java.util.List;
-import java.util.ArrayList;
-
+/**
+ * Representa um usuário no sistema da biblioteca.
+ * Cada usuário possui um nome, pode ter um livro emprestado e um status indicando se possui um livro.
+ */
 public class User {
     private String name;
     private Book book;

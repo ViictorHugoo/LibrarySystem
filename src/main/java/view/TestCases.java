@@ -3,48 +3,58 @@ package src.main.java.view;
 import src.main.java.model.*;
 import src.main.java.service.LibraryService;
 
+/**
+ * Classe responsável por executar uma série de casos de teste para verificar a funcionalidade
+ * do sistema da biblioteca (LibraryService).
+ * Abrange testes para registro, empréstimo, devolução, listagem e remoção de livros, autores e usuários.
+ */
 public class TestCases {
 
+    /**
+     * Executa todos os casos de teste definidos para o sistema da biblioteca.
+     * Inicializa um novo LibraryService para cada execução de teste, garantindo um estado limpo.
+     */
     public static void runAllTests() {
         System.out.println("\n========================================");
         System.out.println("INICIANDO EXECUÇÃO DOS CASOS DE TESTE");
         System.out.println("========================================");
 
+        // Cria uma nova instância de LibraryService para cada execução de teste, garantindo isolamento.
         LibraryService library = new LibraryService();
 
-        // 1. Cadastro de Autor
+        // 1. Testes de Cadastro de Autor
         System.out.println("\n--- 1. Cadastro de Autor ---");
         testRegisterAuthor(library);
 
-        // 2. Cadastro de Livro
+        // 2. Testes de Cadastro de Livro
         System.out.println("\n--- 2. Cadastro de Livro ---");
         testRegisterBook(library);
 
-        // 3. Cadastro de Usuário
+        // 3. Testes de Cadastro de Usuário
         System.out.println("\n--- 3. Cadastro de Usuário ---");
         testRegisterUser(library);
 
-        // 4. Empréstimo de Livro
+        // 4. Testes de Empréstimo de Livro
         System.out.println("\n--- 4. Empréstimo de Livro ---");
         testBorrowBook(library);
 
-        // 5. Devolução de Livro
+        // 5. Testes de Devolução de Livro
         System.out.println("\n--- 5. Devolução de Livro ---");
         testReturnBook(library);
 
-        // 6. Listagens
+        // 6. Testes de Listagens
         System.out.println("\n--- 6. Listagens ---");
         testListings(library);
 
-        // 7. Cobertura de Fluxos Combinados
+        // 7. Testes de Cobertura de Fluxos Combinados
         System.out.println("\n--- 7. Cobertura de Fluxos Combinados ---");
         testCombinedFlows(library);
 
-        // 8. Remoção de livros
+        // 8. Testes de Remoção de livros
         System.out.println("\n--- 8. Remoção de livros ---");
         testRemoveBook(library);
 
-        //9. Remoção de autores
+        // 9. Testes de Remoção de autores
         System.out.println("\n--- 9. Remoção de autores ---");
         testRemoveAuthor(library);
 
@@ -53,6 +63,10 @@ public class TestCases {
         System.out.println("========================================");
     }
 
+    /**
+     * Testa o registro de autores, incluindo casos de sucesso e tentativa de duplicidade.
+     * @param library A instância de LibraryService para realizar as operações.
+     */
     private static void testRegisterAuthor(LibraryService library) {
         System.out.println("A1: Cadastrar autor novo com nome único");
         library.registerAuthor(new Author("Autor Teste 1"));
@@ -61,6 +75,10 @@ public class TestCases {
         library.registerAuthor(new Author("Autor Teste 1"));
     }
 
+    /**
+     * Testa o registro de livros, incluindo casos de sucesso, título repetido e autor inexistente.
+     * @param library A instância de LibraryService para realizar as operações.
+     */
     private static void testRegisterBook(LibraryService library) {
         System.out.println("--------------- logs de preparação de testes ---------------");
         library.registerAuthor(new Author("Autor Existente"));
@@ -83,6 +101,10 @@ public class TestCases {
         library.registerBook(new Book("Livro Teste 4", "Mistério", "Autor Diferente 2"));
     }
 
+    /**
+     * Testa o registro de usuários, incluindo casos de sucesso e tentativa de duplicidade.
+     * @param library A instância de LibraryService para realizar as operações.
+     */
     private static void testRegisterUser(LibraryService library) {
         System.out.println("U1: Cadastrar usuário novo com nome único");
         library.registerUser(new User("Usuario Teste 1"));
@@ -91,6 +113,11 @@ public class TestCases {
         library.registerUser(new User("Usuario Teste 1"));
     }
 
+    /**
+     * Testa o empréstimo de livros, cobrindo cenários de sucesso, livro indisponível, usuário com livro,
+     * livro inexistente e usuário inexistente.
+     * @param library A instância de LibraryService para realizar as operações.
+     */
     private static void testBorrowBook(LibraryService library) {
         System.out.println("--------------- logs de preparação de testes ---------------");
         library.registerUser(new User("Usuario Emprestimo"));
@@ -122,6 +149,11 @@ public class TestCases {
         library.borrowBook("Usuario Emprestimo", "Livro Para Segundo Emprestimo"); // Pega o segundo
     }
 
+    /**
+     * Testa a devolução de livros, cobrindo cenários de sucesso, livro já disponível,
+     * livro não pertencente ao usuário, livro inexistente e usuário inexistente.
+     * @param library A instância de LibraryService para realizar as operações.
+     */
     private static void testReturnBook(LibraryService library) {
         System.out.println("--------------- logs de preparação de testes ---------------");
         library.registerUser(new User("Usuario Devolucao"));
@@ -150,6 +182,10 @@ public class TestCases {
         library.returnBook("Usuario Inexistente", "Livro Emprestado");
     }
 
+    /**
+     * Testa as funcionalidades de listagem de livros (disponíveis, emprestados, todos) e de autores e usuários.
+     * @param library A instância de LibraryService para realizar as operações.
+     */
     private static void testListings(LibraryService library) {
         System.out.println("--------------- logs de preparação de testes ---------------");
         library.registerAuthor(new Author("Autor Listagem"));
@@ -175,6 +211,7 @@ public class TestCases {
         System.out.println("LS5: Listar usuários");
         library.listUsers();
 
+        // Testa listagens com uma biblioteca vazia.
         LibraryService emptyLibrary = new LibraryService();
         System.out.println("LS6: Listar livros com nenhum cadastrado ainda");
         emptyLibrary.listBooks();
@@ -183,6 +220,11 @@ public class TestCases {
         emptyLibrary.listAuthors();
     }
 
+    /**
+     * Testa fluxos combinados de operações, incluindo um cenário completo de empréstimo/devolução
+     * e tentativas de operações inválidas.
+     * @param library A instância de LibraryService para realizar as operações.
+     */
     private static void testCombinedFlows(LibraryService library) {
         System.out.println("FX1: Cadastrar autor + livro + usuário + emprestar + devolver");
         library.registerAuthor(new Author("Autor FX1"));
@@ -192,11 +234,15 @@ public class TestCases {
         library.returnBook("Usuario FX1", "Livro FX1");
 
         System.out.println("FX2: Tentar cadastrar tudo errado (autor duplicado, livro com autor inexistente, etc.)");
-        library.registerAuthor(new Author("Autor FX1")); // Duplicado
-        library.registerBook(new Book("Livro Inexistente Autor", "G", "Autor Nao Existe"));
-        library.registerUser(new User("Usuario FX1")); // Duplicado
+        library.registerAuthor(new Author("Autor FX1")); // Tenta cadastrar autor duplicado.
+        library.registerBook(new Book("Livro Inexistente Autor", "G", "Autor Nao Existe")); // Tenta cadastrar livro com autor inexistente.
+        library.registerUser(new User("Usuario FX1")); // Tenta cadastrar usuário duplicado.
     }
 
+    /**
+     * Testa a remoção de livros, incluindo cenários de sucesso, livro inexistente e livro emprestado.
+     * @param library A instância de LibraryService para realizar as operações.
+     */
     private static void testRemoveBook(LibraryService library) {
         System.out.println("--------------- logs de preparação de testes ---------------");
         library.registerAuthor(new Author("Autor RL1"));
@@ -217,6 +263,10 @@ public class TestCases {
         library.removeBook("Livro RL3");
     }
 
+    /**
+     * Testa a remoção de autores, incluindo cenários de sucesso, autor inexistente e autor com livros emprestados.
+     * @param library A instância de LibraryService para realizar as operações.
+     */
     private static void testRemoveAuthor(LibraryService library) {
         System.out.println("--------------- logs de preparação de testes ---------------");
         library.registerAuthor(new Author("Autor RA1"));
@@ -237,4 +287,5 @@ public class TestCases {
         library.removeAuthor("Autor RA3");
     }
 }
+
 

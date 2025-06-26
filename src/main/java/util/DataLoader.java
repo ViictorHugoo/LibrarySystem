@@ -3,11 +3,20 @@ package src.main.java.util;
 import src.main.java.model.*;
 import src.main.java.service.*;
 
+/**
+ * Classe utilitária responsável por carregar dados iniciais (autores, livros e usuários)
+ * no sistema da biblioteca para fins de demonstração ou testes.
+ */
 public class DataLoader {
 
+    /**
+     * Carrega um conjunto de dados de exemplo no sistema da biblioteca.
+     * Inclui o registro de autores, livros associados a esses autores e usuários.
+     * @param library O serviço da biblioteca onde os dados serão carregados.
+     */
     public static void loadData(LibraryService library) {
 
-        // Autores
+        // Autores de exemplo
         Author[] autores = new Author[]{
                 new Author( "Machado de Assis"),
                 new Author( "Clarice Lispector"),
@@ -21,11 +30,13 @@ public class DataLoader {
                 new Author("Graciliano Ramos")
         };
 
+        // Registra cada autor no serviço da biblioteca.
         for (Author autor : autores) {
             library.registerAuthor(autor);
         }
 
-        // Livros (3 por autor)
+        // Livros de exemplo, associados aos autores previamente registrados.
+        // Cada autor recebe 3 livros para demonstrar a associação.
         library.registerBook(new Book("Dom Casmurro", "Romance", "Machado de Assis"));
         library.registerBook(new Book("Memórias Póstumas de Brás Cubas", "Romance", "Machado de Assis"));
         library.registerBook(new Book("Quincas Borba", "Romance", "Machado de Assis"));
@@ -66,7 +77,7 @@ public class DataLoader {
         library.registerBook(new Book("São Bernardo", "Romance", "Graciliano Ramos"));
         library.registerBook(new Book("Angústia", "Romance", "Graciliano Ramos"));
 
-        // Usuários
+        // Usuários de exemplo
         library.registerUser(new User("Victor Guimarães"));
         library.registerUser(new User("João Silva"));
         library.registerUser(new User("Maria Oliveira"));

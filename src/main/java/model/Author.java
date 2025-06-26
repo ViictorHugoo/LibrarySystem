@@ -3,6 +3,10 @@ package src.main.java.model;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Representa um autor no sistema da biblioteca.
+ * Cada autor possui um nome e uma lista de livros associados a ele.
+ */
 public class Author {
     private String name;
     private List<Book> bookList;

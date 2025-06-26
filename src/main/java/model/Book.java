@@ -1,5 +1,9 @@
 package src.main.java.model;
 
+/**
+ * Representa um livro no sistema da biblioteca.
+ * Cada livro possui um título, gênero, autor e um status de disponibilidade.
+ */
 public class Book {
     private String title;
     private String genre;
