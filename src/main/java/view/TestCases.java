@@ -1,4 +1,5 @@
-package src.main.java.util;
+package src.main.java.view;
 
 public class TestCases {
+
 }
