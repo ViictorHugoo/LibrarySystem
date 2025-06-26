@@ -66,11 +66,11 @@ public class LibraryService {
         Book book = books.get(bookTitle);
 
         if (book == null) {
-            System.out.println("Erro: Livro com Titulo: '" + bookTitle + "' não encontrado.");
+            System.out.println("Erro: Livro com Titulo '" + bookTitle + "' não encontrado.");
             return;
         }
         if (user == null) {
-            System.out.println("Erro: Usuário com Nome: '" + userName + "' não encontrado.");
+            System.out.println("Erro: Usuário com Nome '" + userName + "' não encontrado.");
             return;
         }
 
@@ -100,11 +100,11 @@ public class LibraryService {
         Book book = books.get(bookTitle);
 
         if (book == null) {
-            System.out.println("Erro: Livro com Titulo: '" + bookTitle + "' não encontrado.");
+            System.out.println("Erro: Livro com Titulo '" + bookTitle + "' não encontrado.");
             return;
         }
         if (user == null) {
-            System.out.println("Erro: Usuário com Nome: '" + userName + "' não encontrado.");
+            System.out.println("Erro: Usuário com Nome '" + userName + "' não encontrado.");
             return;
         }
 

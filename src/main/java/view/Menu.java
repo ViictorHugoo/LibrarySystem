@@ -57,7 +57,8 @@ public class Menu {
                 handleInsideSystemMenu();
                 break;
             case "teste":
-                System.out.println("Opção de teste não implementada ainda.");
+                TestCases.runAllTests();
+                System.exit(0);
                 break;
             case "sair":
                 System.exit(0);
