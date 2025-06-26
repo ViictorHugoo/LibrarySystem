@@ -30,11 +30,9 @@ public class InputHandler {
         while (true) {
             try {
                 System.out.print(prompt);
-                // Tenta converter a entrada do usuário para um inteiro.
                 int input = Integer.parseInt(scanner.nextLine());
                 return input;
             } catch (NumberFormatException e) {
-                // Captura a exceção se a entrada não for um número válido e informa o usuário.
                 System.err.println("Entrada inválida. Por favor, digite um número inteiro.");
             }
         }

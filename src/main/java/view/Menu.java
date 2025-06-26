@@ -14,6 +14,7 @@ public class Menu {
     public Menu(LibraryService library) {
         this.library = library;
     }
+
     /**
      * Exibe o menu inicial da aplicação, com opções para entrar no sistema, rodar testes ou sair.
      */
@@ -140,12 +141,17 @@ public class Menu {
         }
     }
 
-
+    /**
+     * Solicita ao usuário os dados para registrar um novo usuário e chama o serviço da biblioteca.
+     */
     private void registerUser() {
         String name = InputHandler.getStringInput("Digite o nome do usuário: ");
         library.registerUser(new User(name));
     }
 
+    /**
+     * Solicita ao usuário os dados para registrar um novo livro e chama o serviço da biblioteca.
+     */
     private void registerBook() {
         String title = InputHandler.getStringInput("Digite o título do livro: ");
         String genre = InputHandler.getStringInput("Digite o gênero do livro: ");
@@ -153,28 +159,44 @@ public class Menu {
         library.registerBook(new Book(title, genre, authorName));
     }
 
+    /**
+     * Solicita ao usuário o nome para registrar um novo autor e chama o serviço da biblioteca.
+     */
     private void registerAuthor() {
         String authorName = InputHandler.getStringInput("Digite o nome do autor: ");
         library.registerAuthor(new Author(authorName));
     }
 
+    /**
+     * Solicita ao usuário os dados para emprestar um livro e chama o serviço da biblioteca.
+     */
     private void borrowBook() {
         String userName = InputHandler.getStringInput("Digite o seu nome de usuário: ");
         String bookTitle = InputHandler.getStringInput("Digite o título do livro a ser emprestado: ");
         library.borrowBook(userName, bookTitle);
     }
 
+    /**
+     * Solicita ao usuário os dados para devolver um livro e chama o serviço da biblioteca.
+     */
     private void returnBook() {
         String userName = InputHandler.getStringInput("Digite o nome do usuário: ");
         String bookTitle = InputHandler.getStringInput("Digite o título do livro a ser devolvido: ");
         library.returnBook(userName, bookTitle);
     }
 
+    /**
+     * Solicita ao usuário o título do livro a ser removido e chama o serviço da biblioteca.
+     */
     private void removeBook() {
         String bookTitle = InputHandler.getStringInput("Digite o titulo do livro a ser removido: ");
         library.removeBook(bookTitle);
     }
 
+    /**
+     * Solicita ao usuário o nome do autor a ser removido e chama o serviço da biblioteca.
+     * Alerta o usuário sobre a remoção de todos os livros associados ao autor.
+     */
     private void removeAuthor() {
         System.out.println("A remocao de um autor acarreta na remocao de todos os livros dele na nossa colecao.");
         System.out.println();
@@ -191,4 +213,3 @@ public class Menu {
         }
     }
 }
-

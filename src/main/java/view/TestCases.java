@@ -287,5 +287,3 @@ public class TestCases {
         library.removeAuthor("Autor RA3");
     }
 }
-
-
